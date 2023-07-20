@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/images/favicon-32x32.png">
+    <title>Multi-Step-Form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="components">
+            <div class="form-steps">
+                <div class="steps">
+                    <div class="steps-number active">1</div>
+                    <span>
+                        <h6>step 1</h6>
+                        <p>your info</p>
+                    </span>
+                </div>
+                <div class="steps">
+                    <div class="steps-number">2</div>
+                    <span>
+                        <h6>step 2</h6>
+                        <p>select plan</p>
+                    </span>
+                </div>
+                <div class="steps">
+                    <div class="steps-number">3</div>
+                    <span>
+                        <h6>step 3</h6>
+                        <p>add-ons</p>
+                    </span>
+                </div>
+                <div class="steps">
+                    <div class="steps-number">4</div>
+                    <span>
+                        <h6>step 4</h6>
+                        <p>summary</p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="personal-info">
+                <h1>Personal info</h1>
+                <p>Please provide your name, email address, and phone number.</p>
+                <form action="#" id="form">
+                    <div class="form-box">
+                        <label for="">name</label>
+                        <input type="text"  name="name" id="name" placeholder="e.g. Stephen King">
+                    </div>
+                    <div class="form-box" id="invalid">
+                        <label for="">email address</label>
+                        <input type="email" name="email" id="email" placeholder="e.g. stephenking@lorem.com">
+                    </div>
+                    <div class="form-box" id="num">
+                        <label for="">phone number</label>
+                        <input type="text" name="number" id="phone-number" placeholder="e.g. +1 234 567 890">
+                    </div>
+                </form>
+                <button class="btn" id="btn">next step</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

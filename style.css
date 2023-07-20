@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+:root {
+    --Marine-blue: hsl(213, 96%, 18%);
+    --Purplish-blue: hsl(243, 100%, 62%);
+    --Pastel-blue: hsl(228, 100%, 84%);
+    --Light-blue: hsl(206, 94%, 87%);
+    --Strawberry-red: hsl(354, 84%, 57%);
+    --Cool-gray: hsl(231, 11%, 63%);
+    --Light-gray: hsl(229, 24%, 87%);
+    --Magnolia: hsl(217, 100%, 97%);
+    --Alabaster: hsl(231, 100%, 99%);
+    --White: hsl(0, 0%, 100%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    background: var(--Light-blue);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    background: var(--White);
+    width: 60%;
+    height: 500px;
+    border: none;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+.container .components {
+    background-color: var(--White);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.components .form-steps {
+    background-image: url(assets/images/bg-sidebar-desktop.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 15% 10%;
+    border: none;
+    border-radius: 10px;
+}
+
+.form-steps .steps {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+}
+
+.steps .steps-number {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border-radius: 50%;
+    border: 1px solid var(--White);
+    text-align: center;
+    color: var(--White);
+    padding: 10px;
+    font-weight: 700;
+}
+
+.form-steps .active {
+    background-color: var(--Light-blue);
+    color: var(--Marine-blue);
+}
+
+.steps span h6 {
+    color: var(--Cool-gray);
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.steps span p {
+    color: var(--White);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.components .personal-info {
+    display: flex;
+    flex-direction: column;
+    padding: 0% 8%;
+}
+
+.personal-info h1 {
+    color: var(--Marine-blue);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-top: 30px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.personal-info p {
+    color: var(--Cool-gray);
+    font-weight: 500;
+    margin-bottom: 40px;
+    font-size: .9rem;
+}
+
+.personal-info form .form-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-box label {
+    text-transform: capitalize;
+    color: var(--Marine-blue);
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: .8rem;
+    opacity: 0.9;
+}
+
+.form-box input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--Light-grayish-violet);
+    border-radius: 6px;
+    padding: 3%;
+    border: 1px solid var(--Light-gray);
+    color: var(--Marine-blue);
+    font-weight: 700;
+}
+
+.form-box input:focus-visible {
+    outline: 1px solid var(--Cool-gray);
+}
+
+.form-box input::placeholder {
+    color: var(--Cool-gray);
+    font-weight: 700;
+}
+
+.form-box .invalid {
+    color: var(--Strawberry-red);
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.personal-info .btn {
+    width: 100px;
+    height: 40px;
+    text-transform: capitalize;
+    font-size: .9rem;
+    background: var(--Marine-blue);
+    color: var(--White);
+    border: none;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 15%;
+    right: 24%;
+}
+
+.personal-info .btn:hover {
+    background: var(--Purplish-blue);
+}
