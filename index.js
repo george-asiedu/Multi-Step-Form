@@ -10,9 +10,19 @@ const step3 = document.getElementById('step-3')
 const step4 = document.getElementById('step-4')
 const personalInfo = document.querySelector('.personal-info')
 const planSelect = document.querySelector('.plan-select')
+const monthlySelect = document.getElementById('monthly')
+const yearlySelect = document.getElementById('yearly')
+const monthlySwitch = document.querySelector('.monthly-switch')
+const yearlySwitch = document.querySelector('.yearly-switch')
+const goBack = document.getElementById('btn-back')
+const btn2 = document.getElementById('btn2')
+const arcade = document.getElementById('arcade')
+const advanced = document.getElementById('advanced')
+const pro = document.getElementById('pro')
 
 
 btn.addEventListener('click', nextStep)
+
 
 function nextStep() {
 
@@ -75,6 +85,5 @@ function nextStep() {
         planSelect.style.display = 'block'
         step2.classList.add('active')
     } 
-    
-    
+   
 }

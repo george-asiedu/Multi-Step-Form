@@ -246,6 +246,31 @@ img {
     color: var(--Cool-gray);
 }
 
+.plan-select .yearly-option {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    margin-bottom: 30px;
+    display: none;
+}
+
+.yearly-option .option {
+    border: 1px solid var(--Light-gray);
+    border-radius: 8px;
+    background: var(--White);
+    padding: 10%;
+}
+
+.yearly-option .option:hover {
+    border: 1px solid var(--Marine-blue);
+}
+
+.option .discount {
+    color: var(--Marine-blue);
+    margin-top: 5px;
+    font-weight: 700;
+}
+
 .plan-select .plan-toggle {
     width: 100%;
     height: 40px;
