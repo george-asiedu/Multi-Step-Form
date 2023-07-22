@@ -9,6 +9,7 @@ const step2 = document.getElementById('step-2')
 const step3 = document.getElementById('step-3')
 const step4 = document.getElementById('step-4')
 const personalInfo = document.querySelector('.personal-info')
+const planSelect = document.querySelector('.plan-select')
 
 
 btn.addEventListener('click', nextStep)
@@ -71,6 +72,7 @@ function nextStep() {
     } else {
         step1.classList.remove('active')
         personalInfo.style.display = 'none'
+        planSelect.style.display = 'block'
         step2.classList.add('active')
     } 
     
