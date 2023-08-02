@@ -5,15 +5,9 @@ const formBox = document.querySelectorAll('.form-box')
 const btn = document.querySelector('#btn')
 const btn2 = document.getElementById('btn2')
 const goBack = document.getElementById('btn-back')
-const step3 = document.getElementById('step-3')
-const step4 = document.getElementById('step-4')
-const monthlySelect = document.getElementById('monthly')
-const yearlySelect = document.getElementById('yearly')
-const monthlySwitch = document.querySelector('.monthly-switch')
-const yearlySwitch = document.querySelector('.yearly-switch')
-const arcade = document.getElementById('arcade')
-const advanced = document.getElementById('advanced')
-const pro = document.getElementById('pro')
+const togglePlan = document.querySelector('.switch')
+const month = document.querySelector('.monthly')
+
 
 const newElement = textNode => {
     const errorMessage = document.createElement('p')
@@ -74,3 +68,25 @@ const validateNumber = () => {
         setTimeout(() => errorMessage.remove(), 5000);
     }
 }
+
+goBack.addEventListener('click', previous)
+
+function previous() {
+    document.querySelector('.personal-info').style.display = 'block'
+    document.getElementById('step-1').classList.add('active')
+    document.querySelector('.plan-select').style.display = 'none'
+    document.getElementById('step-2').classList.remove('active')
+}
+
+togglePlan.addEventListener('click', () => {
+    togglePlan.classList.toggle('active')
+
+    if(togglePlan.classList.contains('active')) {
+        document.querySelector('.yearly').classList.add('boldText')
+        month.classList.remove('monthly')
+    }
+    else {
+        document.querySelector('.yearly').classList.remove('boldText')
+        month.classList.add('monthly')
+    }
+})

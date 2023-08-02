@@ -292,30 +292,51 @@ img {
     font-size: 1rem;
 }
 
+.plan-toggle .monthly {
+    color: var(--Marine-blue);
+    font-weight: 700;
+}
+
+.plan-toggle .new {
+    color: var(--Marine-blue);
+    font-weight: 700;
+}
+
+.plan-toggle .boldText {
+    color: var(--Marine-blue);
+    font-weight: 700;
+}
+
+.plan-toggle .mediumText {
+    color: var(--Marine-blue);
+    font-weight: 700;
+}
+
 .plan-toggle .switch {
-    width: 50px;
-    height: 25px;
+    position: relative;
+    width: 85px;
+    height: 35px;
     background: var(--Marine-blue);
-    border: none;
-    border-radius: 25px;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    border-radius: 100px;
+    cursor: pointer;   
 }
 
-.switch .monthly-switch {
-    width: 15px;
-    height: 15px;
-    background: var(--Alabaster);
+.plan-toggle .switch::before {
+    content: '';
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background: var(--White);
     border-radius: 50%;
+    top: 50%;  
+    left: 4px;
+    transform: translateY(-50%);
+    transition: all .3s ease-in-out;
 }
 
-.switch .yearly-switch {
-    width: 15px;
-    height: 15px;
-    background: transparent;
-    border-radius: 50%;
+.plan-toggle .switch.active::before {
+    background: var(--White);
+    left: calc(100% - 30px - 4px);
 }
 
 .plan-select .step2-buttons {
