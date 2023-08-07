@@ -19,10 +19,27 @@
     padding: 0;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 body {
     overflow-x: hidden;
-    background: var(--Light-blue);
-    height: 100vh;
+    background: var(--Magnolia);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+}
+
+/* body {
+    overflow-x: hidden;
+    background: var(--Magnolia);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,15 +56,15 @@ img {
 
 .container {
     background: var(--White);
-    width: 60%;
+    width: 900px;
     height: 500px;
     border: none;
     border-radius: 10px;
-    padding: 1%;
-}
+    padding: 10px;
+    box-shadow: 0px 0px 1px black;
+} */
 
-.container .components {
-    background-color: var(--White);
+/* .container .components {
     width: 100%;
     height: 100%;
     display: grid;
@@ -72,7 +89,7 @@ img {
 .form-steps .steps {
     display: flex;
     align-items: center;
-    gap: 1.3rem;
+    gap: 1rem;
 }
 
 .steps .steps-number {
@@ -356,4 +373,4 @@ img {
 
 .step2-buttons .btn-back:hover {
     color: var(--Marine-blue);
-}
+} */
