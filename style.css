@@ -181,6 +181,7 @@ img {
     position: absolute;
     bottom: 14%;
     right: 24%;
+    cursor: pointer;
 }
 
 .personal-info .btn:hover {
@@ -231,6 +232,10 @@ img {
     border: 1px solid var(--Marine-blue);
 }
 
+.monthly-option .active-plan {
+    background: var(--Magnolia);
+}
+
 .option img {
     margin-bottom: 50px;
 }
@@ -247,29 +252,14 @@ img {
     color: var(--Cool-gray);
 }
 
-.plan-select .yearly-option {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1rem;
-    margin-bottom: 30px;
-    display: none;
-}
-
-.yearly-option .option {
-    border: 1px solid var(--Light-gray);
-    border-radius: 8px;
-    background: var(--White);
-    padding: 10%;
-}
-
-.yearly-option .option:hover {
-    border: 1px solid var(--Marine-blue);
-}
-
-.option .discount {
+.option span .discount-1,
+.option span .discount-2,
+.option span .discount-3 {
     color: var(--Marine-blue);
+    font-weight: 500;
     margin-top: 5px;
-    font-weight: 700;
+    margin-bottom: 0;
+    display: none;
 }
 
 .plan-select .plan-toggle {
@@ -297,17 +287,7 @@ img {
     font-weight: 700;
 }
 
-.plan-toggle .new {
-    color: var(--Marine-blue);
-    font-weight: 700;
-}
-
 .plan-toggle .boldText {
-    color: var(--Marine-blue);
-    font-weight: 700;
-}
-
-.plan-toggle .mediumText {
     color: var(--Marine-blue);
     font-weight: 700;
 }
@@ -355,6 +335,7 @@ img {
     color: var(--White);
     border: none;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .step2-buttons .btn:hover {
@@ -370,6 +351,7 @@ img {
     color: var(--Cool-gray);
     border: none;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .step2-buttons .btn-back:hover {

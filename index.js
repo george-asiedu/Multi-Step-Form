@@ -7,6 +7,11 @@ const btn2 = document.getElementById('btn2')
 const goBack = document.getElementById('btn-back')
 const togglePlan = document.querySelector('.switch')
 const month = document.querySelector('.monthly')
+const annualArcade = document.querySelector('.annual-arcade')
+const annualAdvanced = document.querySelector('.annual-advanced')
+const annualPro = document.querySelector('.annual-pro')
+const options = document.querySelectorAll('.option')
+
 
 
 const newElement = textNode => {
@@ -84,9 +89,54 @@ togglePlan.addEventListener('click', () => {
     if(togglePlan.classList.contains('active')) {
         document.querySelector('.yearly').classList.add('boldText')
         month.classList.remove('monthly')
+        annualArcade.textContent = '$90/yr'
+        annualAdvanced.textContent = '$120/yr'
+        annualPro.textContent = '$150/yr'
+        document.querySelector('.discount-1').style.display = 'block'
+        document.querySelector('.discount-2').style.display = 'block'
+        document.querySelector('.discount-3').style.display = 'block'
     }
     else {
         document.querySelector('.yearly').classList.remove('boldText')
         month.classList.add('monthly')
+        annualArcade.textContent = '$9/mo'
+        annualAdvanced.textContent = '$12/mo'
+        annualPro.textContent = '$15/mo'
+        document.querySelector('.discount-1').style.display = 'none'
+        document.querySelector('.discount-2').style.display = 'none'
+        document.querySelector('.discount-3').style.display = 'none'
     }
 })
+
+// btn2.addEventListener('click', () => {
+//     options.forEach( option => {
+//         option.addEventListener('click', () => {
+//             option.classList.add('active-plan')
+//             console.log(option)
+//         })
+//     })
+// })
+
+for(const option of options) {
+    option.addEventListener('click', (e) => {
+        const element = e.target
+        element.classList.add('active-plan')
+        console.log(element)
+
+        if(element.classList.contains('active-plan')) {
+            element.classList.add('active-plan')
+       
+        for(const option of options) {
+           if(option != element){
+            option.classList.remove('active-plan')
+           }
+    
+       }
+        } else {
+            element.classList.remove('active-plan')
+        }
+    })
+}
+
+
+
