@@ -150,6 +150,7 @@ body {
     flex: 1;
     justify-content: center;
     gap: 2rem;
+    margin-bottom: 60px;
 }
 
 .form-box {
@@ -238,6 +239,12 @@ body {
     color: var(--Cool-gray);
 }
 
+.plan-info .free {
+    color: var(--Marine-blue);
+    font-weight: 400;
+    display: none;
+}
+
 .plan-toggle {
     height: 40px;
     background: var(--Magnolia);
@@ -319,6 +326,7 @@ body {
     flex: 1;
     justify-content: center;
     gap: 1.3rem;
+    margin-bottom: 50px;
 }
 
 .box {
@@ -354,6 +362,7 @@ body {
 .add-ons small {
     color: var(--Cool-gray);
     font-weight: 500;
+    font-size: .9rem;
 }
 
 .price {

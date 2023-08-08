@@ -99,16 +99,23 @@ toggleSwitch.addEventListener('click', () => {
     const val = toggleSwitch.classList.toggle('active')
 
     if(val) {
-        document.querySelector(".monthly").classList.remove("sw-active");
-        document.querySelector(".yearly").classList.add("sw-active");
+        document.querySelector(".monthly").classList.remove("sw-active")
+        document.querySelector(".yearly").classList.add("sw-active")
+        const discount = document.querySelectorAll('.free')
+        discount.forEach(free => {
+            free.style.display = 'block'
+        })
     } else {
-        document.querySelector(".monthly").classList.add("sw-active");
-        document.querySelector(".yearly").classList.remove("sw-active");
+        document.querySelector(".monthly").classList.add("sw-active")
+        document.querySelector(".yearly").classList.remove("sw-active")
+        const discount = document.querySelectorAll('.free')
+        discount.forEach(free => {
+            free.style.display = 'none'
+        })
     }
 
     planSubscribtion(val)
     obj.kind = val
-    console.log(obj.kind)
 })
 
 const planSubscribtion = price => {
@@ -118,62 +125,29 @@ const planSubscribtion = price => {
 
     if(price) {
         prices[0].innerText = `$${yearlyPrice[0]}/yr`
-        prices[0].innerText = `$${yearlyPrice[1]}/yr`
-        prices[0].innerText = `$${yearlyPrice[2]}/yr`
+        prices[1].innerText = `$${yearlyPrice[1]}/yr`
+        prices[2].innerText = `$${yearlyPrice[2]}/yr`
         setTime(true)
     } else {
         prices[0].innerText = `$${monthlyPrice[0]}/mo`
-        prices[0].innerText = `$${monthlyPrice[1]}/mo`
-        prices[0].innerText = `$${monthlyPrice[2]}/mo`
+        prices[1].innerText = `$${monthlyPrice[1]}/mo`
+        prices[2].innerText = `$${monthlyPrice[2]}/mo`
         setTime(false)
     }
 }
 
-// togglePlan.addEventListener('click', () => {
-//     togglePlan.classList.toggle('active')
+nextStep[1].addEventListener('click', () => {
+    if(plans.value !== '') {
+        document.getElementById('step-2').classList.remove('active')
+        steps[1].style.display = 'none'
+        steps[2].style.display = 'block'
+        document.getElementById('step-3').classList.add('active')
+    }
+})
 
-//     if(togglePlan.classList.contains('active')) {
-//         document.querySelector('.yearly').classList.add('boldText')
-//         month.classList.remove('monthly')
-//         annualArcade.textContent = '$90/yr'
-//         annualAdvanced.textContent = '$120/yr'
-//         annualPro.textContent = '$150/yr'
-//         document.querySelector('.discount-1').style.display = 'block'
-//         document.querySelector('.discount-2').style.display = 'block'
-//         document.querySelector('.discount-3').style.display = 'block'
-//     }
-//     else {
-//         document.querySelector('.yearly').classList.remove('boldText')
-//         month.classList.add('monthly')
-//         annualArcade.textContent = '$9/mo'
-//         annualAdvanced.textContent = '$12/mo'
-//         annualPro.textContent = '$15/mo'
-//         document.querySelector('.discount-1').style.display = 'none'
-//         document.querySelector('.discount-2').style.display = 'none'
-//         document.querySelector('.discount-3').style.display = 'none'
-//     }
-// })
-
-// for(const option of options) {
-//     option.addEventListener('click', (e) => {
-//         const element = e.target
-//         element.classList.add('active-plan')
-//         console.log(element)
-
-//         if(element.classList.contains('active-plan')) {
-//             element.classList.add('active-plan')
-       
-//         for(const option of options) {
-//            if(option != element){
-//             option.classList.remove('active-plan')
-//            }
-    
-//        }
-//         } else {
-//             element.classList.remove('active-plan')
-//         }
-//     })
-// }
-
-
-
+prevStep[1].addEventListener('click', () => {
+    document.getElementById('step-2').classList.add('active')
+    steps[1].style.display = 'block'
+    steps[2].style.display = 'none'
+    document.getElementById('step-3').classList.remove('active')
+})
