@@ -1,38 +1,39 @@
-const phoneNumber = document.querySelector('#phone-number')
+const steps = document.querySelectorAll('.stp')
+const phone = document.querySelector('#phone-number')
 const nameInput = document.querySelector('#name')
 const email = document.querySelector('#email')
 const formBox = document.querySelectorAll('.form-box')
-const btn = document.querySelector('#btn')
-const btn2 = document.getElementById('btn2')
-const goBack = document.getElementById('btn-back')
-const togglePlan = document.querySelector('.switch')
-const month = document.querySelector('.monthly')
-const annualArcade = document.querySelector('.annual-arcade')
-const annualAdvanced = document.querySelector('.annual-advanced')
-const annualPro = document.querySelector('.annual-pro')
-const options = document.querySelectorAll('.option')
+const nextStep = document.querySelectorAll('.next-btn')
+const prevStep = document.querySelectorAll('.prev-btn')
+const plans = document.querySelectorAll('.plan-card')
+const toggleSwitch = document.querySelector('.switch')
 
 
+const obj = {
+    plan: null,
+    kind: null,
+    price: null
+}
 
 const newElement = textNode => {
     const errorMessage = document.createElement('p')
-    errorMessage.classList.add('invalid')
+    errorMessage.classList.add('errText')
     const text = document.createTextNode(textNode)
     errorMessage.appendChild(text)
     return errorMessage
 }
 
-btn.addEventListener('click', StepOne) 
+nextStep[0].addEventListener('click', StepOne) 
 
 function StepOne() {    
     validateEmail()    
     validateName()    
     validateNumber()
 
-    if(nameInput.value !== '' && phoneNumber.value !== '' && email.value !== '') {
+    if(nameInput.value !== '' && phone.value !== '' && email.value !== '') {
         document.getElementById('step-1').classList.remove('active')
-        document.querySelector('.personal-info').style.display = 'none'
-        document.querySelector('.plan-select').style.display = 'block'
+        steps[0].style.display = 'none'
+        steps[1].style.display = 'block'
         document.getElementById('step-2').classList.add('active')
     }
 }
@@ -44,99 +45,135 @@ const validateEmail = () => {
         email.focus()
         return true
     } else if(email.value === '') {
-        const errorMessage = newElement("can't be blank")
+        const errorMessage = newElement("This field is required")
         formBox[1].appendChild(errorMessage)
-        setTimeout(() => errorMessage.remove(), 5000);
+        setTimeout(() => errorMessage.remove(), 3000);
     } else {                     
         const errorMessage = newElement("Invalid email format")
         formBox[1].appendChild(errorMessage)
-        setTimeout(() => errorMessage.remove(), 5000);
+        setTimeout(() => errorMessage.remove(), 3000);
     }
 }
 
 const validateName = () => {
     if(nameInput.value === '') {
-        const errorMessage = newElement("can't be blank")       
+        const errorMessage = newElement("This field is required")       
         formBox[0].appendChild(errorMessage)
-        setTimeout(() => errorMessage.remove(), 5000);
+        setTimeout(() => errorMessage.remove(), 3000);
     }
 }
 
 const validateNumber = () => {
-    if(phoneNumber.value === '') {
-        const errorMessage = newElement("can't be blank")                
-        document.getElementById('num').appendChild(errorMessage)
+    if(phone.value === '') {
+        const errorMessage = newElement("This field is required")                
+        formBox[2].appendChild(errorMessage)
         setTimeout(() => errorMessage.remove(), 3000);
-    } else if(isNaN(phoneNumber.value)) {
+    } else if(isNaN(phone.value)) {
         const errorMessage = newElement("wrong format")               
-        document.getElementById('num').appendChild(errorMessage)
-        setTimeout(() => errorMessage.remove(), 5000);
+        formBox[2].appendChild(errorMessage)
+        setTimeout(() => errorMessage.remove(), 3000);
     }
 }
 
-goBack.addEventListener('click', previous)
-
-function previous() {
-    document.querySelector('.personal-info').style.display = 'block'
+prevStep[0].addEventListener('click', () => {
     document.getElementById('step-1').classList.add('active')
-    document.querySelector('.plan-select').style.display = 'none'
+    steps[0].style.display = 'block'
+    steps[1].style.display = 'none'
     document.getElementById('step-2').classList.remove('active')
-}
-
-togglePlan.addEventListener('click', () => {
-    togglePlan.classList.toggle('active')
-
-    if(togglePlan.classList.contains('active')) {
-        document.querySelector('.yearly').classList.add('boldText')
-        month.classList.remove('monthly')
-        annualArcade.textContent = '$90/yr'
-        annualAdvanced.textContent = '$120/yr'
-        annualPro.textContent = '$150/yr'
-        document.querySelector('.discount-1').style.display = 'block'
-        document.querySelector('.discount-2').style.display = 'block'
-        document.querySelector('.discount-3').style.display = 'block'
-    }
-    else {
-        document.querySelector('.yearly').classList.remove('boldText')
-        month.classList.add('monthly')
-        annualArcade.textContent = '$9/mo'
-        annualAdvanced.textContent = '$12/mo'
-        annualPro.textContent = '$15/mo'
-        document.querySelector('.discount-1').style.display = 'none'
-        document.querySelector('.discount-2').style.display = 'none'
-        document.querySelector('.discount-3').style.display = 'none'
-    }
 })
 
-// btn2.addEventListener('click', () => {
-//     options.forEach( option => {
-//         option.addEventListener('click', () => {
-//             option.classList.add('active-plan')
-//             console.log(option)
-//         })
-//     })
+plans.forEach(plan => {
+    plan.addEventListener('click', () => {
+        document.querySelector(".selected").classList.remove("selected");
+        plan.classList.add('selected')
+        const planName = plan.querySelector('b').innerText
+        const planPrice = plan.querySelector('.plan-price').innerText
+        obj.plan = planName
+        console.log(obj.plan)
+        obj.price = planPrice
+        console.log(obj.price)
+    })
+})
+
+toggleSwitch.addEventListener('click', () => {
+    const val = toggleSwitch.classList.toggle('active')
+
+    if(val) {
+        document.querySelector(".monthly").classList.remove("sw-active");
+        document.querySelector(".yearly").classList.add("sw-active");
+    } else {
+        document.querySelector(".monthly").classList.add("sw-active");
+        document.querySelector(".yearly").classList.remove("sw-active");
+    }
+
+    planSubscribtion(val)
+    obj.kind = val
+    console.log(obj.kind)
+})
+
+const planSubscribtion = price => {
+    const yearlyPrice = [90, 120, 150]
+    const monthlyPrice = [9, 12, 15]
+    const prices = document.querySelectorAll('.plan-price')
+
+    if(price) {
+        prices[0].innerText = `$${yearlyPrice[0]}/yr`
+        prices[0].innerText = `$${yearlyPrice[1]}/yr`
+        prices[0].innerText = `$${yearlyPrice[2]}/yr`
+        setTime(true)
+    } else {
+        prices[0].innerText = `$${monthlyPrice[0]}/mo`
+        prices[0].innerText = `$${monthlyPrice[1]}/mo`
+        prices[0].innerText = `$${monthlyPrice[2]}/mo`
+        setTime(false)
+    }
+}
+
+// togglePlan.addEventListener('click', () => {
+//     togglePlan.classList.toggle('active')
+
+//     if(togglePlan.classList.contains('active')) {
+//         document.querySelector('.yearly').classList.add('boldText')
+//         month.classList.remove('monthly')
+//         annualArcade.textContent = '$90/yr'
+//         annualAdvanced.textContent = '$120/yr'
+//         annualPro.textContent = '$150/yr'
+//         document.querySelector('.discount-1').style.display = 'block'
+//         document.querySelector('.discount-2').style.display = 'block'
+//         document.querySelector('.discount-3').style.display = 'block'
+//     }
+//     else {
+//         document.querySelector('.yearly').classList.remove('boldText')
+//         month.classList.add('monthly')
+//         annualArcade.textContent = '$9/mo'
+//         annualAdvanced.textContent = '$12/mo'
+//         annualPro.textContent = '$15/mo'
+//         document.querySelector('.discount-1').style.display = 'none'
+//         document.querySelector('.discount-2').style.display = 'none'
+//         document.querySelector('.discount-3').style.display = 'none'
+//     }
 // })
 
-for(const option of options) {
-    option.addEventListener('click', (e) => {
-        const element = e.target
-        element.classList.add('active-plan')
-        console.log(element)
+// for(const option of options) {
+//     option.addEventListener('click', (e) => {
+//         const element = e.target
+//         element.classList.add('active-plan')
+//         console.log(element)
 
-        if(element.classList.contains('active-plan')) {
-            element.classList.add('active-plan')
+//         if(element.classList.contains('active-plan')) {
+//             element.classList.add('active-plan')
        
-        for(const option of options) {
-           if(option != element){
-            option.classList.remove('active-plan')
-           }
+//         for(const option of options) {
+//            if(option != element){
+//             option.classList.remove('active-plan')
+//            }
     
-       }
-        } else {
-            element.classList.remove('active-plan')
-        }
-    })
-}
+//        }
+//         } else {
+//             element.classList.remove('active-plan')
+//         }
+//     })
+// }
 
 
 
