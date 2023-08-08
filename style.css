@@ -17,6 +17,9 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    border: none;
 }
 
 img {
@@ -25,64 +28,37 @@ img {
 }
 
 body {
-    overflow-x: hidden;
     background: var(--Magnolia);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 1rem;
-}
-
-/* body {
-    overflow-x: hidden;
-    background: var(--Magnolia);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 1rem;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
 }
 
 .container {
     background: var(--White);
     width: 900px;
-    height: 500px;
-    border: none;
     border-radius: 10px;
-    padding: 10px;
     box-shadow: 0px 0px 1px black;
-} */
-
-/* .container .components {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2rem;
 }
 
-.components .form-steps {
+.components {
+    display: flex;
+    padding: .8rem;
+}
+
+.form-steps {
     background-image: url(assets/images/bg-sidebar-desktop.svg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100%;
+    width: 400px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding: 15% 10%;
-    border: none;
+    padding: 3rem 2rem;
     border-radius: 10px;
 }
 
@@ -111,7 +87,7 @@ img {
 
 .steps span h6 {
     color: var(--Cool-gray);
-    font-size: 1rem;
+    font-size: .9rem;
     text-transform: uppercase;
     margin-bottom: 5px;
 }
@@ -123,193 +99,156 @@ img {
     letter-spacing: 1px;
 }
 
-.components .personal-info {
+.stp {
     display: flex;
     flex-direction: column;
-    padding: 0% 8%;
+    justify-content: center;
+    padding: 0rem 4rem;
 }
 
-.personal-info h1 {
+.stp .header {
+    margin-bottom: auto;
+    padding-top: 2rem;
+    line-height: 2.5rem;
+}
+
+.header h1 {
     color: var(--Marine-blue);
-    font-weight: 700;
     font-size: 2rem;
-    margin-top: 30px;
-    margin-bottom: 8px;
 }
 
-.personal-info p {
+.header p {
     color: var(--Cool-gray);
-    font-weight: 500;
-    margin-bottom: 40px;
-    font-size: .9rem;
+    font-weight: 400;
 }
 
-.personal-info form .form-box {
+.next-btn {
+    margin-top: auto;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    padding: .9rem 1.3rem;
+    border-radius: 7px;
+    background-color: var(--Marine-blue);
+    color: white;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.next-btn:hover {
+    background: var(--Purplish-blue);
+}
+
+/* step 1 style rules */
+.step-1 {
+    display: flex;
+    width: 90%;
+}
+
+.step-1 form {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    flex: 1;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
 }
 
 .form-box label {
     text-transform: capitalize;
     color: var(--Marine-blue);
-    font-weight: 600;
-    margin-bottom: 5px;
-    font-size: .8rem;
-    opacity: 0.9;
-}
-
-.form-box input {
-    width: 100%;
-    height: 40px;
-    border: 1px solid var(--Light-grayish-violet);
-    border-radius: 6px;
-    padding: 3%;
-    border: 1px solid var(--Light-gray);
-    color: var(--Marine-blue);
     font-weight: 700;
-}
-
-.form-box input:focus-visible {
-    outline: 1px solid var(--Cool-gray);
-}
-
-.form-box input::placeholder {
-    color: var(--Cool-gray);
-    font-weight: 700;
-}
-
-.form-box .invalid {
-    color: var(--Strawberry-red);
-    margin-top: 5px;
-    margin-bottom: 0;
-}
-
-
-.personal-info .btn {
-    width: 100px;
-    height: 40px;
-    text-transform: capitalize;
-    font-size: .9rem;
-    background: var(--Marine-blue);
-    color: var(--White);
-    border: none;
-    border-radius: 8px;
-    position: absolute;
-    bottom: 14%;
-    right: 24%;
-    cursor: pointer;
-}
-
-.personal-info .btn:hover {
-    background: var(--Purplish-blue);
-}
-
-.plan-select {
-    padding: 0% 2%;
-    width: 500px;
-    height: 80%;
-    position: absolute;
-    top: 10%;
-    left: 44%;
-    background: var(--White);
-    display: none;
-}
-
-.plan-select h1 {
-    color: var(--Marine-blue);
-    font-weight: 700;
-    font-size: 2rem;
-    margin-top: 30px;
     margin-bottom: 8px;
 }
 
-.plan-select p {
-    color: var(--Cool-gray);
+.form-box input {
+    border: 1px solid var(--Light-grayish-violet);
+    border-radius: 6px;
+    padding: .8rem;
+    border: 1px solid var(--Cool-gray);
     font-weight: 500;
-    margin-bottom: 40px;
-    font-size: .9rem;
+    color: var(--Marine-blue);
 }
 
-.plan-select .monthly-option {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+.form-box input:focus {
+    outline-color: var(--Purplish-blue);
+}
+
+.form-box input::placeholder {
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--Cool-gray);
+}
+
+/* step 2 style rules */
+.step-2 {
+    display: none;
+    width: 90%;
+}
+
+.plan-options {
+    display: flex;
+    flex: 1;
+    align-items: center;
     gap: 1rem;
-    margin-bottom: 30px;
 }
 
-.monthly-option .option {
-    border: 1px solid var(--Light-gray);
-    border-radius: 8px;
-    background: var(--White);
-    padding: 10%;
+.plan-card {
+    border: 2px solid var(--Light-gray);
+    border-radius: 6px;
+    width: 150px;
+    height: 170px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    cursor: pointer;
 }
 
-.monthly-option .option:hover {
+.plan-card:hover {
     border: 1px solid var(--Marine-blue);
 }
 
-.monthly-option .active-plan {
-    background: var(--Magnolia);
+.plan-info {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem; 
 }
 
-.option img {
-    margin-bottom: 50px;
-}
-
-.option span h5 {
+.plan-info b {
     color: var(--Marine-blue);
-    font-size: 1rem;
-    text-transform: capitalize;
-    margin-bottom: 5px;
 }
 
-.option span p {
-    margin-bottom: 0;
+.plan-info p {
     color: var(--Cool-gray);
 }
 
-.option span .discount-1,
-.option span .discount-2,
-.option span .discount-3 {
-    color: var(--Marine-blue);
-    font-weight: 500;
-    margin-top: 5px;
-    margin-bottom: 0;
-    display: none;
-}
-
-.plan-select .plan-toggle {
-    width: 100%;
+.plan-toggle {
     height: 40px;
     background: var(--Magnolia);
-    mix-blend-mode: darken;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
     margin-bottom: 70px;
-    border: none;
     border-radius: 5px;
 }
 
-.plan-toggle h5 {
-    font-weight: 400;
-    color: var(--Cool-gray);
-    font-size: 1rem;
+.monthly,
+.yearly {
+  color: var(--Cool-gray);
+  font-weight: 500;
 }
 
-.plan-toggle .monthly {
+.sw-active {
     color: var(--Marine-blue);
-    font-weight: 700;
 }
 
-.plan-toggle .boldText {
-    color: var(--Marine-blue);
-    font-weight: 700;
-}
-
-.plan-toggle .switch {
+.switch {
     position: relative;
     width: 85px;
     height: 35px;
@@ -318,7 +257,7 @@ img {
     cursor: pointer;   
 }
 
-.plan-toggle .switch::before {
+.switch::before {
     content: '';
     position: absolute;
     height: 30px;
@@ -331,46 +270,156 @@ img {
     transition: all .3s ease-in-out;
 }
 
+.btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.prev-btn {
+    margin-top: auto;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    background-color: transparent;
+    padding: .9rem 1.3rem;
+    border-radius: 7px;
+    color: var(--Cool-gray);
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.prev-btn:hover {
+    color: var(--Marine-blue);
+}
+
+.step-3 {
+    display: none;
+    width: 80%;
+}
+
+.addons-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    gap: 1.3rem;
+}
+
+.box {
+    border: 1px solid var(--Cool-gray);
+    border-radius: 6px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.box input {
+    accent-color: var(--Purplish-blue);
+    transform: scale(1.5);
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.add-ons {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-left: 15px;
+}
+
+.add-ons label {
+    color: var(--Marine-blue);
+    font-weight: 700;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.add-ons small {
+    color: var(--Cool-gray);
+    font-weight: 500;
+}
+
+.price {
+    margin-left: auto;
+    color: var(--Purplish-blue);
+    font-weight: 500;
+}
+
+/* step 4 style rules */
+.step-4 {
+    display: none;
+    width: 80%;
+}
+
+.selected-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
+.selected-container {
+    background-color: var(--Magnolia);
+    padding: 1.5rem;
+}
+
+.selected-plan {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    color: var(--Marine-blue);
+    font-weight: 700;
+}
+
+.selected-addons {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    color: var(--Cool-gray);
+    font-weight: 500;
+    font-size: .9rem;
+}
+
+.selected-addons .service-price {
+    color: var(--Marine-blue);
+}
+
+.total {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--Cool-gray); 
+}
+
+.total b {
+    color: var(--Purplish-blue);
+    font-size: 1.2rem;
+}
+
+/* step 5 style rules */
+.step-5 {
+    display: none;
+    align-items: center;
+    width: 90%;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.step-5 h1 {
+    color: var(--Marine-blue);
+    font-size: 2rem;
+}
+
+.step-5 p {
+    color: var(--Cool-gray);
+    font-weight: 400;
+}
+/* 
 .plan-toggle .switch.active::before {
     background: var(--White);
     left: calc(100% - 30px - 4px);
 }
-
-.plan-select .step2-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0;
-}
-
-.step2-buttons .btn {
-    width: 100px;
-    height: 40px;
-    text-transform: capitalize;
-    font-size: .9rem;
-    background: var(--Marine-blue);
-    color: var(--White);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.step2-buttons .btn:hover {
-    background: var(--Purplish-blue);
-}
-
-.step2-buttons .btn-back {
-    width: 100px;
-    height: 40px;
-    text-transform: capitalize;
-    font-size: 1rem;
-    background: transparent;
-    color: var(--Cool-gray);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.step2-buttons .btn-back:hover {
-    color: var(--Marine-blue);
-} */
+*/
