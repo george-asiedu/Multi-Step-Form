@@ -7,6 +7,8 @@ const nextStep = document.querySelectorAll('.next-btn')
 const prevStep = document.querySelectorAll('.prev-btn')
 const plans = document.querySelectorAll('.plan-card')
 const toggleSwitch = document.querySelector('.switch')
+const addons = document.querySelectorAll('.box')
+const total = document.querySelector(".total b");
 
 
 const obj = {
@@ -23,9 +25,8 @@ const newElement = textNode => {
     return errorMessage
 }
 
-nextStep[0].addEventListener('click', StepOne) 
 
-function StepOne() {    
+nextStep[0].addEventListener('click', () => {
     validateEmail()    
     validateName()    
     validateNumber()
@@ -36,7 +37,17 @@ function StepOne() {
         steps[1].style.display = 'block'
         document.getElementById('step-2').classList.add('active')
     }
+}) 
+
+
+const validateName = () => {
+    if(nameInput.value === '') {
+        const errorMessage = newElement("This field is required")       
+        formBox[0].appendChild(errorMessage)
+        setTimeout(() => errorMessage.remove(), 3000);
+    }
 }
+
 
 const validateEmail = () => {
     const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -55,13 +66,6 @@ const validateEmail = () => {
     }
 }
 
-const validateName = () => {
-    if(nameInput.value === '') {
-        const errorMessage = newElement("This field is required")       
-        formBox[0].appendChild(errorMessage)
-        setTimeout(() => errorMessage.remove(), 3000);
-    }
-}
 
 const validateNumber = () => {
     if(phone.value === '') {
@@ -75,12 +79,14 @@ const validateNumber = () => {
     }
 }
 
+
 prevStep[0].addEventListener('click', () => {
     document.getElementById('step-1').classList.add('active')
     steps[0].style.display = 'block'
     steps[1].style.display = 'none'
     document.getElementById('step-2').classList.remove('active')
 })
+
 
 plans.forEach(plan => {
     plan.addEventListener('click', () => {
@@ -89,11 +95,10 @@ plans.forEach(plan => {
         const planName = plan.querySelector('b').innerText
         const planPrice = plan.querySelector('.plan-price').innerText
         obj.plan = planName
-        console.log(obj.plan)
         obj.price = planPrice
-        console.log(obj.price)
     })
 })
+
 
 toggleSwitch.addEventListener('click', () => {
     const val = toggleSwitch.classList.toggle('active')
@@ -118,6 +123,7 @@ toggleSwitch.addEventListener('click', () => {
     obj.kind = val
 })
 
+
 const planSubscribtion = price => {
     const yearlyPrice = [90, 120, 150]
     const monthlyPrice = [9, 12, 15]
@@ -136,6 +142,7 @@ const planSubscribtion = price => {
     }
 }
 
+
 nextStep[1].addEventListener('click', () => {
     if(plans.value !== '') {
         document.getElementById('step-2').classList.remove('active')
@@ -145,9 +152,83 @@ nextStep[1].addEventListener('click', () => {
     }
 })
 
+
 prevStep[1].addEventListener('click', () => {
     document.getElementById('step-2').classList.add('active')
     steps[1].style.display = 'block'
     steps[2].style.display = 'none'
     document.getElementById('step-3').classList.remove('active')
+})
+
+
+function label(element) {
+    const idValue = element.id
+    const labels = document.querySelectorAll('label')
+
+    for(const label of labels) {
+        if(label.htmlFor == idValue) {
+            return label
+        }
+    }
+}
+
+
+addons.forEach(addon => {
+    addon.addEventListener('click', e => {
+        const selectAddon = addon.querySelector('input')
+        const id = addon.getAttribute('data-id')
+        if(selectAddon.checked) {
+            selectAddon.checked = false
+            addon.classList.remove('selected-add')
+            displayAddon(id, false)
+        } else {
+            selectAddon.checked = true
+            addon.classList.add('selected-add')
+            displayAddon(addon, true)
+            e.preventDefault()
+        }
+    })
+})
+
+
+const displayAddon = (add, val) => {
+    const template =document.querySelector('template')
+    const clone = template.content.cloneNode(true)
+    const serviceName = clone.querySelector('.service-name')
+    const servicePrice = clone.querySelector('.service-price')
+    const serviceId = clone.querySelector('.selected-addons')
+
+    if(add && val) {
+        serviceName.innerText = add.querySelector('label').innerText
+        servicePrice.innerText = add.querySelector('.price').innerText
+        serviceId.setAttribute('data-id', add.dataset.id)
+        document.querySelector('.selected-addons-box').appendChild(clone)
+    } else {
+        const addons = document.querySelectorAll('.selected-addons')
+        addons.forEach(addon => {
+            const addonAttr = addon.getAttribute('data-id')
+            
+            if(addonAttr == add) {
+                addon.remove()
+            }
+        })
+    }
+}
+
+
+nextStep[2].addEventListener('click', () => {
+    if(addons.checked !== '') {
+        document.getElementById('step-3').classList.remove('active')
+        steps[2].style.display = 'none'
+        steps[3].style.display = 'block'
+        document.getElementById('step-4').classList.add('active')
+    }
+})
+
+
+prevStep[2].addEventListener('click', () => {
+    document.getElementById('step-3').classList.add('active')
+    steps[2].style.display = 'block'
+    steps[3].style.display = 'none'
+    document.getElementById('step-4').classList.remove('active')
 })

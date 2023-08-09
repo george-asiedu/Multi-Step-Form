@@ -371,6 +371,11 @@ body {
     font-weight: 500;
 }
 
+.selected-add {
+    border: 1px solid var(--Purplish-blue);
+    background: var(--Magnolia);
+}
+
 /* step 4 style rules */
 .step-4 {
     display: none;
@@ -382,6 +387,7 @@ body {
     flex-direction: column;
     justify-content: center;
     flex: 1;
+    margin-bottom: 50px;
 }
 
 .selected-container {
@@ -421,6 +427,10 @@ body {
 .total b {
     color: var(--Purplish-blue);
     font-size: 1.2rem;
+}
+
+.step-4 .next-btn {
+    background: var(--Purplish-blue);
 }
 
 /* step 5 style rules */
