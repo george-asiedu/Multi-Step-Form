@@ -395,6 +395,12 @@ body {
     padding: 1.5rem;
 }
 
+.selected-container hr {
+    width: 100%;
+    background-color: var(--Cool-gray);
+    height: 1px;
+}
+
 .selected-plan {
     display: flex;
     justify-content: space-between;
@@ -596,5 +602,22 @@ body {
 
     .add-ons small {
         font-size: .7rem;
+    }
+
+    .step-4 {
+        width: 90%;
+    }
+
+    .selected-box {
+        margin-bottom: 0px;
+    }
+
+    .step-5 {
+        padding: 3rem 2rem;
+    }
+
+    .step-5 img {
+        margin-bottom: 40px;
+        transform: scale(1.3);
     }
 }
