@@ -133,12 +133,12 @@ const planSubscribtion = price => {
         prices[0].innerText = `$${yearlyPrice[0]}/yr`
         prices[1].innerText = `$${yearlyPrice[1]}/yr`
         prices[2].innerText = `$${yearlyPrice[2]}/yr`
-        setTime(true)
+        planDuration(true)
     } else {
         prices[0].innerText = `$${monthlyPrice[0]}/mo`
         prices[1].innerText = `$${monthlyPrice[1]}/mo`
         prices[2].innerText = `$${monthlyPrice[2]}/mo`
-        setTime(false)
+        planDuration(false)
     }
 }
 
@@ -219,8 +219,16 @@ nextStep[2].addEventListener('click', () => {
     if(addons.checked !== '') {
         steps[2].style.display = 'none'
         steps[3].style.display = 'block'
-        document.getElementById('step-4').classList.add('active')
+        document.getElementById('step-4').classList.add('active')    
     }
+})
+
+nextStep[3].addEventListener('click', () => {
+    steps[3].style.display = 'none'
+    steps[4].style.display = 'block'
+    document.getElementById('step-4').classList.add('active')
+    planTotal()
+    addSummary(obj)
 })
 
 
@@ -230,6 +238,7 @@ prevStep[2].addEventListener('click', () => {
     steps[3].style.display = 'none'
     document.getElementById('step-4').classList.remove('active')
 })
+
 
 const addSummary = obj => {
     const planName = document.querySelector('.plan-name')
@@ -245,13 +254,20 @@ const planTotal = () => {
     const regex = price.replace(/\D/g, '')
     const addonPrices = document.querySelectorAll('.selected-addons .service-price')
 
-    let planValue = 0
-    for(price of addonPrices) {
-        const price = planPrice.innerHTML
+    let planValue = 0;
+
+    for(let i = 0; i , addonPrices.length; i++) {
+        const price = addonPrices[i].innerHTML
         const regex = price.replace(/\D/g, '')
+
         planValue += Number(regex)
     }
 
     total.innerHTML = `$${planValue + Number(regex)}/${
         duration ? 'yr' : 'mo'}`
+}
+
+
+const planDuration = time => {
+    return duration = time
 }

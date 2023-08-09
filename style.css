@@ -29,7 +29,7 @@ img {
 
 body {
     background: var(--Magnolia);
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -443,18 +443,78 @@ body {
     margin: auto;
 }
 
+.step-5 img {
+    margin-bottom: 40px;
+    transform: scale(1.5);
+}
+
 .step-5 h1 {
     color: var(--Marine-blue);
-    font-size: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
 .step-5 p {
     color: var(--Cool-gray);
     font-weight: 400;
 }
-/* 
-.plan-toggle .switch.active::before {
-    background: var(--White);
-    left: calc(100% - 30px - 4px);
+
+
+/* phone media query */
+@media (max-width: 600px) {
+    body {
+        max-width: 100%;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        box-shadow: none;
+        background-color: var(--Magnolia);
+    }
+
+    .components {
+        flex-direction: column;
+        padding: 0rem;
+        position: relative;
+    }
+
+    .form-steps {
+        background-image: url(assets/images/bg-sidebar-mobile.svg);
+        width: 100%;
+        height: 100%;
+        flex-direction: row;
+        gap: 1.5rem;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 3rem 7rem;
+        border-radius: 0px;
+    }
+
+    .steps span {
+        display: none;
+    }
+
+    .stp {
+        position: absolute;
+        top: 60%;
+        left: 5%;
+        padding: 0rem 2rem;
+        background-color: var(--White);
+        border-radius: 10px;
+    }
+
+    .stp .header {
+        margin-bottom: 30px;
+        line-height: 3rem;
+    }
+
+    .header p {
+        line-height: 1.5rem;
+    }
+
+    .step-1 form {
+        gap: 1rem;
+    }
 }
-*/
