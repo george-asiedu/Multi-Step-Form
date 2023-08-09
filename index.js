@@ -10,6 +10,7 @@ const toggleSwitch = document.querySelector('.switch')
 const addons = document.querySelectorAll('.box')
 const total = document.querySelector(".total b");
 
+let duration;
 
 const obj = {
     plan: null,
@@ -32,12 +33,19 @@ nextStep[0].addEventListener('click', () => {
     validateNumber()
 
     if(nameInput.value !== '' && phone.value !== '' && email.value !== '') {
-        document.getElementById('step-1').classList.remove('active')
         steps[0].style.display = 'none'
         steps[1].style.display = 'block'
         document.getElementById('step-2').classList.add('active')
     }
 }) 
+
+
+prevStep[0].addEventListener('click', () => {
+    document.getElementById('step-1').classList.add('active')
+    steps[0].style.display = 'block'
+    steps[1].style.display = 'none'
+    document.getElementById('step-2').classList.remove('active')
+})
 
 
 const validateName = () => {
@@ -78,14 +86,6 @@ const validateNumber = () => {
         setTimeout(() => errorMessage.remove(), 3000);
     }
 }
-
-
-prevStep[0].addEventListener('click', () => {
-    document.getElementById('step-1').classList.add('active')
-    steps[0].style.display = 'block'
-    steps[1].style.display = 'none'
-    document.getElementById('step-2').classList.remove('active')
-})
 
 
 plans.forEach(plan => {
@@ -145,7 +145,6 @@ const planSubscribtion = price => {
 
 nextStep[1].addEventListener('click', () => {
     if(plans.value !== '') {
-        document.getElementById('step-2').classList.remove('active')
         steps[1].style.display = 'none'
         steps[2].style.display = 'block'
         document.getElementById('step-3').classList.add('active')
@@ -218,7 +217,6 @@ const displayAddon = (add, val) => {
 
 nextStep[2].addEventListener('click', () => {
     if(addons.checked !== '') {
-        document.getElementById('step-3').classList.remove('active')
         steps[2].style.display = 'none'
         steps[3].style.display = 'block'
         document.getElementById('step-4').classList.add('active')
@@ -232,3 +230,28 @@ prevStep[2].addEventListener('click', () => {
     steps[3].style.display = 'none'
     document.getElementById('step-4').classList.remove('active')
 })
+
+const addSummary = obj => {
+    const planName = document.querySelector('.plan-name')
+    const planPrice = document.querySelector('.plan-price')
+    planName.innerText = `${obj.plan.innerText}`
+    planPrice.innerText = `${obj.price.innerText} (${
+        obj.kind ? 'yearly' : 'monthly'
+    })`
+}
+
+const planTotal = () => {
+    const price = planPrice.innerHTML
+    const regex = price.replace(/\D/g, '')
+    const addonPrices = document.querySelectorAll('.selected-addons .service-price')
+
+    let planValue = 0
+    for(price of addonPrices) {
+        const price = planPrice.innerHTML
+        const regex = price.replace(/\D/g, '')
+        planValue += Number(regex)
+    }
+
+    total.innerHTML = `$${planValue + Number(regex)}/${
+        duration ? 'yr' : 'mo'}`
+}
