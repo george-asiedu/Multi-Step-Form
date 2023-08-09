@@ -567,4 +567,34 @@ body {
     .switch.active::before {
         left: calc(100% - 20px - 4px);
     }
+
+    .step-3 {
+        width: 90%;
+    }
+
+    .addons-container {
+        margin-bottom: 25px;
+        gap: .8rem;
+    }
+
+    .box {
+        justify-content: space-between;
+    }
+
+    .box input {
+        transform:  scale(1.2);
+    }
+
+    .add-ons {
+        gap: .3rem;
+    }
+
+    .add-ons label {
+        letter-spacing: 0;
+        font-size: .9rem;
+    }
+
+    .add-ons small {
+        font-size: .7rem;
+    }
 }
