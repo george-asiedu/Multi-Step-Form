@@ -32,7 +32,7 @@ nextStep[0].addEventListener('click', () => {
     validateName()    
     validateNumber()
 
-    if(nameInput.value !== '' && phone.value !== '' && email.value !== '') {
+    if(nameInput.value !== '' && phone.value !== '' && !isNaN(phone.value) && email.value !== '') {
         steps[0].style.display = 'none'
         steps[1].style.display = 'block'
         document.getElementById('step-2').classList.add('active')
