@@ -465,6 +465,37 @@ body {
     font-weight: 400;
 }
 
+/* large desktops media query */
+@media (min-width: 1200px) {
+    .components {
+        padding: .7rem;
+    }
+
+    .stp .header {
+        margin-bottom: 10px;
+    }
+
+    .plan-options {
+        margin-bottom: 40px;
+    }
+
+    .plan-toggle {
+        margin-bottom: 80px;
+    }
+
+    .addons-container {
+        margin-bottom: 60px;
+    }
+
+    .selected-box {
+        margin-bottom: 15px;
+    }
+
+    .selected-container {
+        margin-bottom: 0px;
+    }
+} 
+
 /* tablet media query */
 @media (min-width: 720px) and (max-width: 998px) {
     .container {
