@@ -470,6 +470,36 @@ body {
     .container {
         width: 95%;
     }
+
+    .components {
+        padding: .6rem;
+    }
+
+    .form-steps {
+        height: 550px;
+        width: 60%;
+    }
+
+    .stp {
+        padding: 0rem 2.5rem;
+    }
+
+    .stp .header {
+        margin-bottom: 30px;
+    }
+
+    .header p {
+        line-height: 1.5rem;
+    }
+
+    .plan-card {
+        width: 120px;
+        gap: 0rem;
+    }
+
+    .plan-toggle {
+        margin-bottom: 120px;
+    }
 }
 
 
