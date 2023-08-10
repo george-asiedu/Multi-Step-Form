@@ -1,4 +1,5 @@
 const steps = document.querySelectorAll('.stp')
+const stepNumber = document.querySelectorAll('.steps-number')
 const phone = document.querySelector('#phone-number')
 const nameInput = document.querySelector('#name')
 const email = document.querySelector('#email')
@@ -11,12 +12,12 @@ const addons = document.querySelectorAll('.box')
 const total = document.querySelector(".total b");
 
 let duration;
-
 const obj = {
     plan: null,
     kind: null,
     price: null
 }
+
 
 const newElement = textNode => {
     const errorMessage = document.createElement('p')
@@ -36,6 +37,7 @@ nextStep[0].addEventListener('click', () => {
         steps[0].style.display = 'none'
         steps[1].style.display = 'block'
         document.getElementById('step-2').classList.add('active')
+        document.getElementById('step-1').classList.remove('active')
     }
 }) 
 
@@ -148,6 +150,7 @@ nextStep[1].addEventListener('click', () => {
         steps[1].style.display = 'none'
         steps[2].style.display = 'block'
         document.getElementById('step-3').classList.add('active')
+        document.getElementById('step-2').classList.remove('active')
     }
 })
 
@@ -158,19 +161,6 @@ prevStep[1].addEventListener('click', () => {
     steps[2].style.display = 'none'
     document.getElementById('step-3').classList.remove('active')
 })
-
-
-function label(element) {
-    const idValue = element.id
-    const labels = document.querySelectorAll('label')
-
-    for(const label of labels) {
-        if(label.htmlFor == idValue) {
-            return label
-        }
-    }
-}
-
 
 addons.forEach(addon => {
     addon.addEventListener('click', e => {
@@ -219,7 +209,8 @@ nextStep[2].addEventListener('click', () => {
     if(addons.checked !== '') {
         steps[2].style.display = 'none'
         steps[3].style.display = 'block'
-        document.getElementById('step-4').classList.add('active')    
+        document.getElementById('step-4').classList.add('active') 
+        document.getElementById('step-3').classList.remove('active')   
     }
 })
 
